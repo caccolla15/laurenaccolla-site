@@ -1,0 +1,366 @@
+/* ==========================================================
+   Lauren Accolla | Children's Book Author
+   Palette drawn from Lauren's color study + illustration sample
+   ========================================================== */
+
+:root {
+  /* Color */
+  --marian: #14247c;        /* deep mantle blue */
+  --marian-deep: #0d1a5e;
+  --sky: #84c3f7;           /* soft sky blue */
+  --teal: #3b93a5;          /* storybook teal */
+  --mist: #dcecee;          /* pale aqua wash */
+  --blush: #fde4e4;         /* tender pink */
+  --rose: #b93f69;          /* berry rose for small accents */
+  --lavender: #cdb6e6;
+  --ribbon: #e8962e;        /* golden crayon ribbon */
+  --ink: #1c2245;           /* navy-ink body text */
+  --ink-soft: #4a5070;
+  --paper: #ffffff;
+  --paper-blue: #f4f9fc;
+  --line: #d5e2ea;
+
+  /* Type */
+  --font-display: "Young Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(1.9rem, 1.4rem + 2vw, 2.6rem);
+  --step-4: clamp(2.6rem, 1.6rem + 4.5vw, 4.75rem);
+
+  --measure: 36em;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section: clamp(4rem, 9vw, 7.5rem);
+
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; height: auto; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  color: var(--marian);
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1.1em; max-width: var(--measure); }
+
+a { color: var(--marian); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { color: var(--rose); }
+
+:focus-visible {
+  outline: 3px solid var(--ribbon);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--marian); color: #fff; padding: 0.6rem 1rem; border-radius: 6px; z-index: 100;
+}
+.skip-link:focus { top: 1rem; color: #fff; }
+
+.wrap { width: min(72rem, 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; min-height: 4.25rem; flex-wrap: wrap;
+}
+.brand {
+  font-family: var(--font-display); font-size: 1.3rem; color: var(--marian);
+  text-decoration: none; line-height: 1.1;
+}
+.brand:hover { color: var(--marian); }
+.nav { display: flex; align-items: center; gap: clamp(0.9rem, 2.5vw, 2rem); flex-wrap: wrap; }
+.nav a {
+  font-size: var(--step--1); font-weight: 500; color: var(--ink); text-decoration: none;
+  padding: 0.25rem 0;
+}
+.nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--ribbon); }
+.nav a:hover { color: var(--rose); }
+.nav .nav-cta {
+  background: var(--marian); color: #fff; padding: 0.5rem 1rem; border-radius: 999px;
+}
+.nav .nav-cta:hover { background: var(--marian-deep); color: #fff; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 1rem;
+  padding: 0.85rem 1.6rem; border-radius: 999px; border: 2px solid var(--marian);
+  background: var(--marian); color: #fff; text-decoration: none; cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.btn:hover { background: var(--marian-deep); border-color: var(--marian-deep); color: #fff; }
+.btn-light { background: #fff; color: var(--marian); border-color: #fff; }
+.btn-light:hover { background: var(--blush); border-color: var(--blush); color: var(--marian); }
+.btn-outline { background: transparent; color: var(--marian); }
+.btn-outline:hover { background: var(--marian); color: #fff; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(3rem, 7vw, 5.5rem);
+}
+.hero .wrap { position: relative; z-index: 1; }
+.hero-name {
+  font-size: var(--step-4); margin-bottom: 0.15em; letter-spacing: -0.01em;
+}
+.hero-role {
+  font-family: var(--font-display); font-size: var(--step-1); color: var(--teal); margin: 0 0 1.75rem;
+}
+.hero-tagline {
+  font-family: var(--font-display); font-size: var(--step-3); line-height: 1.2;
+  color: var(--ink); max-width: 18em; margin-bottom: 2.75rem;
+}
+.hero-welcome {
+  display: grid; gap: 0 clamp(2rem, 5vw, 4rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 62rem;
+}
+.hero-welcome p { font-size: 1.1rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.75rem; }
+
+/* Golden crayon ribbon: the signature line of the site */
+.ribbon {
+  position: absolute; left: 0; width: 100%; height: auto; pointer-events: none; z-index: 0;
+}
+.hero .ribbon { top: clamp(1rem, 3vw, 2.5rem); opacity: 0.95; }
+.ribbon path {
+  fill: none; stroke: var(--ribbon); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round;
+}
+.ribbon.draw path {
+  stroke-dasharray: 3200; stroke-dashoffset: 3200;
+  animation: ribbon-draw 3.2s cubic-bezier(.45,.05,.3,1) .2s forwards;
+}
+@keyframes ribbon-draw { to { stroke-dashoffset: 0; } }
+
+/* ---------- Book feature (the "blue blanket") ---------- */
+.book {
+  position: relative; color: #eef3ff;
+  background-color: var(--marian);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 15% 0%, #2a3fa3 0%, transparent 55%);
+  padding-block: var(--section);
+  border-radius: clamp(2rem, 6vw, 5rem) clamp(2rem, 6vw, 5rem) 0 0;
+}
+.book h2, .book h3 { color: #fff; }
+.book a:not(.btn) { color: #fff; }
+.book-grid {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: start;
+}
+.book-intro { font-size: var(--step-0); color: var(--sky); margin: 0 0 0.5rem; font-weight: 500; }
+.book h2 { font-size: var(--step-3); }
+.book-subtitle {
+  font-family: var(--font-display); font-size: var(--step-1); line-height: 1.35; color: #fff;
+  margin-bottom: 1.75rem;
+}
+.book-question {
+  font-family: var(--font-display); font-size: var(--step-2); line-height: 1.3; color: var(--blush);
+  border-left: 3px solid var(--ribbon); padding-left: 1.1rem; margin: 0 0 1.75rem;
+}
+.book p { color: #e3e9fb; }
+.book .cover p { color: var(--marian); }
+
+.cover-col { position: sticky; top: 6.5rem; }
+.cover {
+  aspect-ratio: 1 / 1; border-radius: 4px 14px 14px 4px;
+  background: linear-gradient(160deg, #fdf6f2 0%, #fde4e4 100%);
+  box-shadow: -10px 0 0 -4px rgba(0,0,0,.12) inset, 0 30px 60px -20px rgba(0,0,0,.55), 0 8px 18px rgba(0,0,0,.25);
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  padding: 9% 8% 7%; text-align: center; color: var(--marian); overflow: hidden;
+}
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+.cover-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3.2vw, 2.4rem); line-height: 1.05; margin: 0; }
+.cover-art { width: 78%; }
+.cover-author { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em; margin: 0; }
+.cover.has-image { padding: 0; }
+.cover-note { text-align: center; color: var(--sky); font-size: var(--step--1); margin: 1rem auto 0; }
+
+.coming-soon {
+  margin-top: 2.5rem; padding: 1.6rem 1.75rem; border-radius: 18px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+}
+.coming-soon h3 { font-size: var(--step-2); margin-bottom: 0.35rem; }
+.coming-soon p { margin-bottom: 1.1rem; }
+.buy-links { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+/* ---------- Meet Lauren (home) ---------- */
+.meet { padding-block: var(--section); background: var(--paper-blue); }
+.meet-grid {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+}
+.arch {
+  aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; overflow: hidden;
+  border: 8px solid #fff; box-shadow: 0 0 0 2px var(--sky), 0 24px 48px -24px rgba(20,36,124,.45);
+  max-width: 26rem; margin-inline: auto;
+}
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+.meet h2 { font-size: var(--step-3); }
+.meet .lead { font-family: var(--font-display); font-size: var(--step-1); line-height: 1.45; color: var(--ink); }
+
+/* ---------- Latest updates ---------- */
+.updates { padding-block: var(--section); }
+.section-head { margin-bottom: 2.5rem; }
+.section-head h2 { font-size: var(--step-3); margin-bottom: 0.35rem; }
+.section-head p { color: var(--ink-soft); }
+.update-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.update {
+  display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 0.5rem 2.5rem;
+  padding-block: 2rem; border-bottom: 1px solid var(--line);
+}
+.update time { font-weight: 600; color: var(--teal); font-size: var(--step--1); padding-top: 0.35rem; }
+.update h3 { font-size: var(--step-2); color: var(--ink); margin-bottom: 0.4rem; }
+.update p { color: var(--ink-soft); margin-bottom: 0; }
+
+/* ---------- Join the Journey (email list) ---------- */
+.journey {
+  position: relative; overflow: hidden;
+  background: var(--blush); padding-block: var(--section);
+}
+.journey .ribbon { bottom: -1rem; opacity: 0.8; }
+.journey-grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2rem, 6vw, 5rem); align-items: start;
+}
+.journey h2 { font-size: var(--step-3); }
+.journey .fine { font-size: var(--step--1); color: var(--ink-soft); margin-top: 1rem; }
+
+/* ---------- Forms ---------- */
+.form-card {
+  background: #fff; border-radius: 22px; padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 0 1px 0 var(--line), 0 20px 50px -30px rgba(20,36,124,.35);
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { margin-bottom: 1.1rem; }
+.field label { display: block; font-weight: 600; font-size: var(--step--1); margin-bottom: 0.35rem; color: var(--ink); }
+.field input, .field textarea {
+  width: 100%; font: inherit; color: var(--ink); background: var(--paper-blue);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 0.8rem 0.95rem;
+  transition: border-color .2s, background-color .2s;
+}
+.field textarea { min-height: 10rem; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--marian); background: #fff; box-shadow: 0 0 0 3px rgba(132,195,247,.45); }
+.hp { display: none; }
+
+/* ---------- About page ---------- */
+.page-hero {
+  position: relative; overflow: hidden;
+  padding-block: clamp(3.5rem, 8vw, 6rem) clamp(2.5rem, 5vw, 3.5rem);
+}
+.page-hero .wrap { position: relative; z-index: 1; }
+.page-hero h1 { font-size: var(--step-4); margin-bottom: 0.2em; }
+.page-hero p { font-family: var(--font-display); font-size: var(--step-1); color: var(--teal); }
+.page-hero .ribbon { top: 0.5rem; }
+
+.story { padding-block: clamp(2rem, 5vw, 3.5rem) var(--section); }
+.story-grid {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2rem, 6vw, 5rem);
+}
+.story h2 { font-size: var(--step-3); position: sticky; top: 6.5rem; }
+.story-body p { font-size: 1.1rem; max-width: 34em; }
+.story-turn {
+  font-family: var(--font-display); font-size: var(--step-2) !important; line-height: 1.3; color: var(--marian);
+  margin-block: 2rem !important; padding: 1.4rem 0 1.4rem 1.4rem; border-left: 3px solid var(--ribbon);
+}
+
+.about-meet { padding-block: var(--section); background: var(--paper-blue); }
+.about-meet .meet-grid { align-items: start; }
+.about-meet .arch { max-width: 28rem; position: sticky; top: 6.5rem; }
+.about-meet h2 { font-size: var(--step-3); }
+.about-meet .lead { font-family: var(--font-display); font-size: var(--step-1); line-height: 1.45; }
+
+.connect { padding-block: var(--section); }
+.connect-grid {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2rem, 6vw, 5rem); align-items: start;
+}
+.connect h2 { font-size: var(--step-3); }
+.connect .lead { font-family: var(--font-display); font-size: var(--step-1); color: var(--teal); }
+.connect .thanks-line { margin-top: 2rem; font-style: italic; color: var(--ink-soft); }
+
+/* ---------- Simple pages (thank you / 404) ---------- */
+.simple {
+  position: relative; overflow: hidden; min-height: 60vh;
+  display: flex; align-items: center; padding-block: var(--section);
+}
+.simple .wrap { position: relative; z-index: 1; }
+.simple h1 { font-size: var(--step-4); }
+.simple p { font-size: 1.15rem; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--marian-deep); color: #c9d3f5; padding-block: 3.5rem 2.5rem; font-size: var(--step--1);
+}
+.footer-grid {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; align-items: flex-start;
+}
+.footer-name { font-family: var(--font-display); font-size: 1.5rem; color: #fff; margin: 0 0 0.25rem; }
+.footer-tag { color: var(--sky); margin: 0; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.site-footer a { color: #fff; text-decoration: none; }
+.site-footer a:hover { color: var(--blush); }
+.footer-legal { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.15); color: #9eabd8; }
+.footer-legal p { max-width: none; margin: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero-welcome, .book-grid, .meet-grid, .journey-grid, .story-grid, .connect-grid {
+    grid-template-columns: 1fr;
+  }
+  .cover-col { position: static; max-width: 22rem; margin-inline: auto; width: 100%; }
+  .story h2, .about-meet .arch { position: static; }
+  .update { grid-template-columns: 1fr; gap: 0.25rem; }
+  .update time { padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .site-header .wrap { justify-content: center; padding-block: 0.6rem; }
+  .nav { justify-content: center; gap: 0.9rem; }
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .hero-actions .btn { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ribbon.draw path { animation: none; stroke-dashoffset: 0; }
+  * { transition: none !important; }
+}
